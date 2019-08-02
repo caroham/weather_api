@@ -14,7 +14,8 @@ class LocationInput extends Component {
     this.setState({inputLocation: e.target.value});
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     if(this.state.inputLocation){
       this.props.updateUrl(this.state.inputLocation);
     } else {
@@ -25,8 +26,9 @@ class LocationInput extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleChange}></input>
+          <input type="submit" value="Submit"></input>
         </form>
       </div>
     );
